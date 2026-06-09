@@ -1,0 +1,127 @@
+HTML
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Chrome Page</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #ff3333;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            direction: rtl;
+        }
+
+        .media-container {
+            width: 100%;
+            max-width: 640px;
+            margin-bottom: 30px;
+        }
+
+        video.main-video {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .mobile-link {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 12px 24px;
+            font-size: 1.2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .mobile-link:hover {
+            background-color: #0056b3;
+        }
+
+        #unmute-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 12px 24px;
+            background: #ff3333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1rem;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(255, 51, 51, 0.4);
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+    <button id="unmute-btn" onclick="unmuteAudio()">🔊 Enable Sound</button>
+
+    <div style="position: absolute; width: 0; height: 0; overflow: hidden; z-index: -1;">
+        <video id="bg-music" autoplay loop muted playsinline>
+            <source src="WhatsApp Audio 2026-06-07 at 4.27.43 PM.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <h1>dont play with us</h1>
+    <h2>بدء عمليات المقاومه الفستكيه رسميا</h2>
+
+    <div class="media-container">
+        <video class="main-video" controls>
+            <source src="video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <a href="https://example.com" class="mobile-link">Open Mobile Link</a>
+
+    <script>
+        function unmuteAudio() {
+            var audioTrack = document.getElementById('bg-music');
+            if (audioTrack) {
+                audioTrack.muted = false;
+            }
+            var button = document.getElementById('unmute-btn');
+            if(button) {
+                button.style.display = 'none';
+            }
+        }
+
+        document.body.addEventListener('click', function() {
+            unmuteAudio();
+        }, { once: true });
+    </script>
+
+</body>
+</html>
